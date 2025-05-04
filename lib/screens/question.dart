@@ -96,8 +96,7 @@ class _QuizScreenState extends State<QuizScreen> {
       debugPrint('📤 REQUEST BODY: ${jsonEncode(requestBody)}');
 
       // 3. Log URL
-      final url =
-          'http://192.168.0.126:8000/api/materi/${widget.materiId}/submit-quiz';
+      final url ='http://192.168.0.126:8000/api/materi/${widget.materiId}/submit-quiz';
       debugPrint('🌐 URL: $url');
 
       final response = await http.post(
