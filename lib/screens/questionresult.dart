@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// HALO
 // Using the same elegant color scheme from the first code
 class AppColors {
   static const Color primary = Color(0xFF3F51B5);      // Indigo
