@@ -6,6 +6,7 @@ import 'package:tugas_resa/services/auth_services.dart';
 import 'login.dart';
 import 'MateriDetail.dart';
 
+// HALO
 // Elegant color scheme
 class AppColors {
   static const Color primary = Color(0xFF3F51B5);      // Indigo
