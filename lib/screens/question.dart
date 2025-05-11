@@ -6,7 +6,6 @@ import '../services/auth_services.dart';
 import 'package:tugas_resa/widget/QuestionCard_widget.dart';
 import 'package:tugas_resa/screens/questionresult.dart';
 
-// HALO
 // Using the same elegant color scheme as HomeScreen and MateriDetailScreen
 class AppColors {
   static const Color primary = Color(0xFF3F51B5);      // Indigo

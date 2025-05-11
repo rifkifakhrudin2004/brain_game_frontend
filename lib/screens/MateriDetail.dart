@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tugas_resa/models/materi.dart';
 import 'package:tugas_resa/screens/question.dart';
 
-// HALO
 // Using the same elegant color scheme from HomeScreen
 class AppColors {
   static const Color primary = Color(0xFF3F51B5);      // Indigo
