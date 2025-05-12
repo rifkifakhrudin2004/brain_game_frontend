@@ -18,11 +18,12 @@ class AppColors {
   static const Color textLight = Color(0xFF78909C);    // Light text
   static const Color divider = Color(0xFFEEEEEE);      // Light divider
   
-  // Subject colors
-  static const Color matematika = Color(0xFF42A5F5);   // Blue
-  static const Color biologi = Color(0xFFEC407A);      // Pink
-  static const Color bahasa = Color(0xFF7E57C2);       // Purple
-  static const Color other = Color(0xFF26A69A);        // Teal
+  // Updated Subject colors to match database categories
+  static const Color ipa = Color(0xFF42A5F5);          // Blue for IPA
+  static const Color ips = Color(0xFFEC407A);          // Pink for IPS
+  static const Color bahasaInggris = Color(0xFF7E57C2); // Purple for Bahasa Inggris
+  static const Color bahasaIndonesia = Color(0xFF26A69A); // Teal for Bahasa Indonesia
+  static const Color other = Color(0xFFFF9800);        // Orange for other categories
 }
 
 class HomeScreen extends StatefulWidget {
@@ -31,7 +32,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
-  final List<String> _quizCategories = ['matematika dasar', 'biologi', 'bahasa inggris', 'other'];
+  // Updated quiz categories to match database naming
+  final List<String> _quizCategories = ['IPA', 'IPS', 'Bahasa Inggris', 'Bahasa Indonesia'];
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   final GlobalKey<RefreshIndicatorState> _refreshKey = GlobalKey<RefreshIndicatorState>();
@@ -169,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
         ),
         
-        // Quiz Categories - THIS IS THE FIXED FUNCTION
+        // Quiz Categories - UPDATED FUNCTION
         _buildQuizCategories(materiController),
         
         // Add some bottom padding
@@ -479,7 +481,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     );
   }
 
-  // FIXED FUNCTION - Ensuring proper category display
+  // UPDATED FUNCTION - Using database category names
   Widget _buildQuizCategories(MateriController materiController) {
     if (materiController.materiList.isEmpty) {
       return Container(
@@ -555,17 +557,18 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           final materi = materiController.materiList[index];
           final String categoryName = materi.title;
           
-          // FIX: Improved category matching with more precise matching
+          // UPDATED: Improved category matching with database naming
           String mappedCategory = 'other';
           
-          // Check for specific category keywords in the title
-          if (categoryName.toLowerCase().contains('matemat')) {
-            mappedCategory = 'matematika dasar';
-          } else if (categoryName.toLowerCase().contains('biologi')) {
-            mappedCategory = 'biologi';
-          } else if (categoryName.toLowerCase().contains('bahasa') || 
-                    categoryName.toLowerCase().contains('inggris')) {
-            mappedCategory = 'bahasa inggris';
+          // Match exact database category names
+          if (categoryName.toLowerCase().contains('ipa')) {
+            mappedCategory = 'IPA';
+          } else if (categoryName.toLowerCase().contains('ips')) {
+            mappedCategory = 'IPS';
+          } else if (categoryName.toLowerCase().contains('bahasa inggris')) {
+            mappedCategory = 'Bahasa Inggris';
+          } else if (categoryName.toLowerCase().contains('bahasa indonesia')) {
+            mappedCategory = 'Bahasa Indonesia';
           }
           
           return GestureDetector(
@@ -642,27 +645,32 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     );
   }
 
-  // Updated with more precise category matching
+  // UPDATED: Color mapping for database categories
   Color _getCategoryColor(String category) {
-    switch (category.toLowerCase()) {
-      case 'matematika dasar':
-        return AppColors.matematika;
-      case 'biologi':
-        return AppColors.biologi;
-      case 'bahasa inggris':
-        return AppColors.bahasa;
+    switch (category) {
+      case 'IPA':
+        return AppColors.ipa;
+      case 'IPS':
+        return AppColors.ips;
+      case 'Bahasa Inggris':
+        return AppColors.bahasaInggris;
+      case 'Bahasa Indonesia':
+        return AppColors.bahasaIndonesia;
       default:
-        return AppColors.other; // Use the dedicated "other" color instead of primary
+        return AppColors.other;
     }
   }
 
+  // UPDATED: Icon mapping for database categories
   IconData _getCategoryIcon(String category) {
-    switch (category.toLowerCase()) {
-      case 'matematika dasar':
-        return Icons.calculate;
-      case 'biologi':
+    switch (category) {
+      case 'IPA':
         return Icons.science;
-      case 'bahasa inggris':
+      case 'IPS':
+        return Icons.public;
+      case 'Bahasa Inggris':
+        return Icons.language;
+      case 'Bahasa Indonesia':
         return Icons.menu_book;
       default:
         return Icons.quiz;

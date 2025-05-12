@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 // HALO
 // Using the same elegant color scheme from the first code
 class AppColors {
-  static const Color primary = Color(0xFF3F51B5);      // Indigo
-  static const Color secondary = Color(0xFF5C6BC0);    // Indigo light
-  static const Color accent = Color(0xFFFF4081);       // Pink accent
-  static const Color background = Color(0xFFF8F9FE);   // Light background
-  static const Color card = Color(0xFFFFFFFF);         // White card
-  static const Color text = Color(0xFF263238);         // Dark text
-  static const Color textLight = Color(0xFF78909C);    // Light text
-  static const Color divider = Color(0xFFEEEEEE);      // Light divider
-  
+  static const Color primary = Color(0xFF3F51B5); // Indigo
+  static const Color secondary = Color(0xFF5C6BC0); // Indigo light
+  static const Color accent = Color(0xFFFF4081); // Pink accent
+  static const Color background = Color(0xFFF8F9FE); // Light background
+  static const Color card = Color(0xFFFFFFFF); // White card
+  static const Color text = Color(0xFF263238); // Dark text
+  static const Color textLight = Color(0xFF78909C); // Light text
+  static const Color divider = Color(0xFFEEEEEE); // Light divider
+
   // Result colors
-  static const Color success = Color(0xFF26A69A);      // Green/Teal
-  static const Color warning = Color(0xFFFFA726);      // Orange
-  static const Color error = Color(0xFFEF5350);        // Red
+  static const Color success = Color(0xFF26A69A); // Green/Teal
+  static const Color warning = Color(0xFFFFA726); // Orange
+  static const Color error = Color(0xFFEF5350); // Red
 }
 
 class QuizResultScreen extends StatelessWidget {
@@ -103,7 +103,8 @@ class QuizResultScreen extends StatelessWidget {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.primary, size: 20),
+          icon: Icon(Icons.arrow_back_ios_new_rounded,
+              color: AppColors.primary, size: 20),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -161,7 +162,8 @@ class QuizResultScreen extends StatelessWidget {
                   value: percentage / 100,
                   strokeWidth: 12,
                   backgroundColor: AppColors.divider,
-                  valueColor: AlwaysStoppedAnimation<Color>(_getPercentageColor(percentage)),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      _getPercentageColor(percentage)),
                 ),
               ),
               // Center content
@@ -337,7 +339,11 @@ class QuizResultScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ElevatedButton.icon(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.pushNamedAndRemoveUntil(
+            context,
+            '/home',
+            (Route<dynamic> route) => false,
+          ),
           icon: Icon(Icons.menu_book, size: 18),
           label: Text('Kembali ke Materi'),
           style: ElevatedButton.styleFrom(

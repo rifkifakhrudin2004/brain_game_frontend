@@ -74,7 +74,7 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     final token = await _authService.getToken();
     final response = await http.get(
       Uri.parse(
-          'http://192.168.141.249:8000/api/materi/${widget.materiId}/questions/${widget.level}'),
+          'http://192.168.100.5:8000/api/materi/${widget.materiId}/questions/${widget.level}'),
       headers: {
         'Authorization': 'Bearer $token',
         'Accept': 'application/json',
@@ -136,7 +136,7 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
       debugPrint('📤 REQUEST BODY: ${jsonEncode(requestBody)}');
 
       // 3. Log URL
-      final url ='http://192.168.141.249:8000/api/materi/${widget.materiId}/submit-quiz';
+      final url ='http://192.168.100.5:8000/api/materi/${widget.materiId}/submit-quiz';
       debugPrint('🌐 URL: $url');
 
       final response = await http.post(
