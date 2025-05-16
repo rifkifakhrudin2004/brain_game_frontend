@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     print('Mulai proses login...');
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.100.5:8000/api/login'),
+        Uri.parse('http://192.168.0.126:8000/api/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'email': emailController.text,

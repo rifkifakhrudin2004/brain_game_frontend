@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:tugas_resa/services/auth_services.dart';
 
 class ApiService {
-  final String baseUrl = 'http://192.168.100.5:8000/api'; // URL API
+  final String baseUrl = 'http://192.168.0.126:8000/api'; // URL API
   final AuthService _authService = AuthService(); // Instance AuthService
 
   // Fungsi untuk mendapatkan semua materi
